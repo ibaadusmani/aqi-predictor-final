@@ -1,0 +1,44 @@
+name: 1. Feature Pipeline
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'src/feature_pipeline.py'
+      - 'src/utils.py'
+  schedule:
+    - cron: '0 */1 * * *' # Run every hour
+  workflow_dispatch:
+
+jobs:
+  run-feature-pipeline:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.9'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Run feature pipeline
+        env:
+          OPENWEATHER_API_KEY: ${{ secrets.OPENWEATHER_API_KEY }}
+        run: python -m src.feature_pipeline
+
+      - name: Commit and push if it changed
+        run: |
+          git config --global user.name "GitHub Actions"
+          git config --global user.email "actions@github.com"
+          git add data/processed/features.parquet data/processed/features.csv
+          # Commit only if there are changes
+          git diff --staged --quiet || git commit -m "Update features.parquet and features.csv"
+          # Push only if there's a commit to push
+          git push || echo "No changes to push"
