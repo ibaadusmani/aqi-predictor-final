@@ -3,12 +3,11 @@
 [![CI/CD](https://github.com/your-username/your-repo/actions/workflows/1_feature_pipeline.yml/badge.svg)](https://github.com/your-username/your-repo/actions)
 
 A data science project to forecast the Air Quality Index (AQI) for Islamabad up to 72 hours in advance. This project uses a "serverless" stack with Python, Streamlit, and GitHub Actions for MLOps.
-
-![App Screenshot](https://i.imgur.com/your-screenshot.png)  <!-- Replace with your actual screenshot -->
+<!-- Replace with your actual screenshot -->
 
 ## 🚀 Live App
 
-[Link to your deployed Streamlit Community Cloud app]
+https://aqi-predictor-final.streamlit.app/)
 
 ## ✨ Features
 
@@ -71,3 +70,4 @@ aqi-predictor/
 ├── report.md            # Detailed project report
 └── README.md
 ```
+
