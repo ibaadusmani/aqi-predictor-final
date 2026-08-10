@@ -35,11 +35,9 @@ https://aqi-predictor-final.streamlit.app/)
     pip install -r requirements.txt
     ```
 
-4.  **Set the API Key (Optional but Recommended):**
+4.  **Set the API Key:**
     The app has a default key, but it's best to use your own.
     ```bash
-    export OPENWEATHER_API_KEY="3e5573c559d066b9120b40bc0c08617d"
-    ```
 
 5.  **Run the Streamlit app:**
     ```bash
